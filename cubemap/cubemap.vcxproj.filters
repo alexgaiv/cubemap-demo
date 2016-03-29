@@ -30,9 +30,6 @@
     <ClCompile Include="..\..\..\lib\opengl\source\camera.cpp">
       <Filter>Файлы исходного кода\lib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\lib\opengl\source\global.cpp">
-      <Filter>Файлы исходного кода\lib</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\lib\opengl\source\glwindow.cpp">
       <Filter>Файлы исходного кода\lib</Filter>
     </ClCompile>
@@ -60,6 +57,21 @@
     <ClCompile Include="..\..\..\lib\opengl\source\viewer3d.cpp">
       <Filter>Файлы исходного кода\lib</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\lib\opengl\source\framebuffer.cpp">
+      <Filter>Файлы исходного кода\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\opengl\source\glcontext.cpp">
+      <Filter>Файлы исходного кода\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\opengl\source\basewindow.cpp">
+      <Filter>Файлы исходного кода\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\opengl\source\image.cpp">
+      <Filter>Файлы исходного кода\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\opengl\source\text2d.cpp">
+      <Filter>Файлы исходного кода\lib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainwindow.h">
@@ -67,19 +79,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\redblue.frag.glsl">
-      <Filter>Файлы исходного кода\shaders</Filter>
-    </None>
     <None Include="shaders\shader.frag.glsl">
       <Filter>Файлы исходного кода\shaders</Filter>
     </None>
     <None Include="shaders\shader.vert.glsl">
-      <Filter>Файлы исходного кода\shaders</Filter>
-    </None>
-    <None Include="shaders\skybox.frag.glsl">
-      <Filter>Файлы исходного кода\shaders</Filter>
-    </None>
-    <None Include="shaders\skybox.vert.glsl">
       <Filter>Файлы исходного кода\shaders</Filter>
     </None>
   </ItemGroup>

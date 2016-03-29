@@ -12,7 +12,7 @@ class MainWindow : public GLWindow
 public:
 	MainWindow();
 private:
-	Viewer3D viewer;
+	Viewer3D *viewer;
 	ProgramObject *program;
 	Skybox *skybox[2];
 	Actor *models[2];

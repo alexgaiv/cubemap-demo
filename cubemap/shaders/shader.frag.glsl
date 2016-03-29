@@ -4,7 +4,6 @@ varying vec2 fTexCoord;
 
 uniform int shadeMode;
 uniform mat4 View;
-uniform sampler2D tex;
 uniform samplerCube cubeTex;
 uniform int specularMode;
 
@@ -106,6 +105,14 @@ void main()
 		vec4 clr_inv = vec4(1.0) - clr;
 		float d = 1.0 - max(0.0, dot(clr_inv, frontMaterial.diffuse));
 		clr = vec4(1.0) - clr*d;
+
+		/*
+		float c = pow(max(0.0, dot(-viewDir, fragNormal)), 4);
+		vec4 c1 = mix(gl_FragColor, vec4(0.9), -0.61);
+		vec4 c2 = mix(gl_FragColor, clr, -0.61);
+		gl_FragColor = mix(c1, c2, clamp(c+0.2, 0, 1));
+		/*/
 		gl_FragColor = mix(gl_FragColor, clr, -0.61);
+		//*/
 	}
 }
