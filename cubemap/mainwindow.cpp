@@ -60,16 +60,6 @@ void MainWindow::OnCreate()
 		"textures/2/rt.tga",
 	};
 
-	const char *sides_blurred[] =
-	{
-		"textures/2/ft.tga",
-		"textures/2/bk.tga",
-		"textures/2/up.tga",
-		"textures/2/dn.tga",
-		"textures/2/lf.tga",
-		"textures/2/rt.tga",
-	};
-
 	skybox[0] = new Skybox(m_rc, sides1);
 	skybox[1] = new Skybox(m_rc, sides2);
 
@@ -80,11 +70,10 @@ void MainWindow::OnCreate()
 	models[0]->mesh.BindShader(*program);
 	models[0]->mesh.LoadRaw("models/skull.obj.raw");
 
-	CubeTexture cubeTex(sides_blurred);
 	models[1] = new Actor(m_rc);
 	models[1]->scale = 70.0f;
 	models[1]->location = Vector3f(0.0f, -30.0f, 0.0f);
-	models[1]->mesh.BindTexture(cubeTex);
+	models[1]->mesh.BindTexture(skybox[1]->GetTexture());
 	models[1]->mesh.BindShader(*program);
 	models[1]->mesh.LoadRaw("models/teapot.obj.raw");
 
