@@ -6,7 +6,7 @@ using namespace std;
 
 MainWindow::MainWindow() : current(0)
 {
-	this->CreateParam("Cubemap (press [SPACE])", CW_USEDEFAULT, CW_USEDEFAULT, 800, 600);
+	this->Create("Cubemap (press [SPACE])", CW_USEDEFAULT, CW_USEDEFAULT, 800, 600);
 }
 
 void MainWindow::ChangeModel(int i)
@@ -63,19 +63,21 @@ void MainWindow::OnCreate()
 	skybox[0] = new Skybox(m_rc, sides1);
 	skybox[1] = new Skybox(m_rc, sides2);
 
-	models[0] = new Actor(m_rc);
-	models[0]->scale = 15.0f;
+	models[0] = new Model(m_rc);
+	models[0]->scale = Vector3f(15.0f);
 	models[0]->location = Vector3f(0.0f, -50.0f, 0.0f);
-	models[0]->mesh.BindTexture(skybox[0]->GetTexture());
-	models[0]->mesh.BindShader(*program);
-	models[0]->mesh.LoadRaw("models/skull.obj.raw");
+	models[0]->AddMesh(Mesh(m_rc));
+	models[0]->meshes[0]->LoadRaw("models/skull.obj.raw");
+	models[0]->meshes[0]->BindTexture(skybox[0]->GetTexture());
+	models[0]->BindShader(*program);
 
-	models[1] = new Actor(m_rc);
-	models[1]->scale = 70.0f;
+	models[1] = new Model(m_rc);
+	models[1]->scale = Vector3f(70.0f);
 	models[1]->location = Vector3f(0.0f, -30.0f, 0.0f);
-	models[1]->mesh.BindTexture(skybox[1]->GetTexture());
-	models[1]->mesh.BindShader(*program);
-	models[1]->mesh.LoadRaw("models/teapot.obj.raw");
+	models[1]->AddMesh(Mesh(m_rc));
+	models[1]->meshes[0]->LoadRaw("models/teapot.obj.raw");
+	models[1]->meshes[0]->BindTexture(skybox[1]->GetTexture());
+	models[1]->BindShader(*program);
 
 	ChangeModel(1);
 }
@@ -103,11 +105,11 @@ void MainWindow::OnKeyDown(UINT keyCode) {
 	if (keyCode == 27) DestroyWindow(m_hwnd);
 	else if (keyCode == 32) {
 		ChangeModel(1 - current);
-		RedrawWindow();
+		Redraw();
 	}
 	else if (keyCode == 'Z') {
 		viewer->ResetView();
-		RedrawWindow();
+		Redraw();
 	}
 }
 
@@ -122,11 +124,11 @@ void MainWindow::OnMouseMove(UINT keysPressed, int x, int y)
 {
 	if (keysPressed & KM_LBUTTON) {
 		viewer->Rotate(x, y);
-		RedrawWindow();
+		Redraw();
 	}
 	else if (keysPressed & (KM_RBUTTON|KM_MBUTTON)) {
 		viewer->Pan(x, y);
-		RedrawWindow();
+		Redraw();
 	}
 }
 
@@ -134,7 +136,7 @@ void MainWindow::OnMouseWheel(short delta, UINT keysPressed, int x, int y)
 {
 	if (delta > 0) viewer->Zoom(1.1f);
 	else viewer->Zoom(0.9f);
-	RedrawWindow();
+	Redraw();
 }
 
 void MainWindow::OnDestroy()

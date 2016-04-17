@@ -79,6 +79,7 @@
     <ClCompile Include="..\..\..\lib\opengl\source\glwindow.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\image.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\mesh.cpp" />
+    <ClCompile Include="..\..\..\lib\opengl\source\model.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\quaternion.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\shader.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\skybox.cpp" />

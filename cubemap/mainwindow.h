@@ -5,7 +5,7 @@
 #include "viewer3d.h"
 #include "shader.h"
 #include "skybox.h"
-#include "actor.h"
+#include "model.h"
 
 class MainWindow : public GLWindow
 {
@@ -15,7 +15,7 @@ private:
 	Viewer3D *viewer;
 	ProgramObject *program;
 	Skybox *skybox[2];
-	Actor *models[2];
+	Model *models[2];
 	int current;
 
 	void ChangeModel(int i);
