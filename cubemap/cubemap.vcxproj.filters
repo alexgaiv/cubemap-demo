@@ -54,9 +54,6 @@
     <ClCompile Include="..\..\..\lib\opengl\source\vertexbuffer.cpp">
       <Filter>Файлы исходного кода\lib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\lib\opengl\source\viewer3d.cpp">
-      <Filter>Файлы исходного кода\lib</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\lib\opengl\source\framebuffer.cpp">
       <Filter>Файлы исходного кода\lib</Filter>
     </ClCompile>
@@ -73,6 +70,9 @@
       <Filter>Файлы исходного кода\lib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\lib\opengl\source\model.cpp">
+      <Filter>Файлы исходного кода\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\opengl\source\trackball.cpp">
       <Filter>Файлы исходного кода\lib</Filter>
     </ClCompile>
   </ItemGroup>

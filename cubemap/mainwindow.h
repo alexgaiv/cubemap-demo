@@ -2,7 +2,7 @@
 #define _MAINWINDOW_H_
 
 #include "glwindow.h"
-#include "viewer3d.h"
+#include "trackball.h"
 #include "shader.h"
 #include "skybox.h"
 #include "model.h"
@@ -12,7 +12,7 @@ class MainWindow : public GLWindow
 public:
 	MainWindow();
 private:
-	Viewer3D *viewer;
+	TrackballCamera *camera;
 	ProgramObject *program;
 	Skybox *skybox[2];
 	Model *models[2];

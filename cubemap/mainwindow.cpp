@@ -29,7 +29,7 @@ void MainWindow::OnCreate()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
 	
-	viewer = new Viewer3D(m_rc);
+	camera = new TrackballCamera(m_rc);
 	program = new ProgramObject(m_rc, "shaders/shader.vert.glsl", "shaders/shader.frag.glsl");
 	if (program->IsLinked())
 	{
@@ -88,7 +88,7 @@ void MainWindow::OnDisplay()
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
 	m_rc->PushModelView();
-		viewer->ApplyTransform();
+		camera->ApplyTransform();
 		program->UniformMatrix("View", 1, false, m_rc->GetModelView().data);
 		skybox[current]->Draw();
 		models[current]->Draw();
@@ -98,7 +98,7 @@ void MainWindow::OnDisplay()
 void MainWindow::OnSize(int w, int h)
 {
 	glViewport(0, 0, w, h);
-	viewer->SetPerspective(45.0f, 1.0f, 1e6f, Point3f(0.0f, 0.0f, -200.0f), w, h);
+	camera->SetPerspective(45.0f, 1.0f, 1e6f, Point3f(0.0f, 0.0f, -200.0f), w, h);
 }
 
 void MainWindow::OnKeyDown(UINT keyCode) {
@@ -108,7 +108,7 @@ void MainWindow::OnKeyDown(UINT keyCode) {
 		Redraw();
 	}
 	else if (keyCode == 'Z') {
-		viewer->ResetView();
+		camera->ResetView();
 		Redraw();
 	}
 }
@@ -116,32 +116,32 @@ void MainWindow::OnKeyDown(UINT keyCode) {
 void MainWindow::OnMouseDown(MouseButton b, int x, int y)
 {
 	if (b == MouseButton::LBUTTON)
-		viewer->BeginRotate(x, y);
-	else viewer->BeginPan(x, y);
+		camera->BeginRotate(x, y);
+	else camera->BeginPan(x, y);
 }
 
 void MainWindow::OnMouseMove(UINT keysPressed, int x, int y)
 {
 	if (keysPressed & KM_LBUTTON) {
-		viewer->Rotate(x, y);
+		camera->Rotate(x, y);
 		Redraw();
 	}
 	else if (keysPressed & (KM_RBUTTON|KM_MBUTTON)) {
-		viewer->Pan(x, y);
+		camera->Pan(x, y);
 		Redraw();
 	}
 }
 
 void MainWindow::OnMouseWheel(short delta, UINT keysPressed, int x, int y)
 {
-	if (delta > 0) viewer->Zoom(1.1f);
-	else viewer->Zoom(0.9f);
+	if (delta > 0) camera->Zoom(1.1f);
+	else camera->Zoom(0.9f);
 	Redraw();
 }
 
 void MainWindow::OnDestroy()
 {
-	delete viewer;
+	delete camera;
 	delete program;
 	for (int i = 0; i < 2; i++) {
 		delete skybox[i];

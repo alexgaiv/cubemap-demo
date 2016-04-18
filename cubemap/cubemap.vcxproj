@@ -87,7 +87,7 @@
     <ClCompile Include="..\..\..\lib\opengl\source\texture.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\transform.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\vertexbuffer.cpp" />
-    <ClCompile Include="..\..\..\lib\opengl\source\viewer3d.cpp" />
+    <ClCompile Include="..\..\..\lib\opengl\source\trackball.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
   </ItemGroup>
