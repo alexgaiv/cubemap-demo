@@ -28,6 +28,7 @@ void MainWindow::OnCreate()
 	glewInit();
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
+	//glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
 	
 	camera = new TrackballCamera(m_rc);
 	program = new ProgramObject(m_rc, "shaders/shader.vert.glsl", "shaders/shader.frag.glsl");
@@ -62,22 +63,23 @@ void MainWindow::OnCreate()
 
 	skybox[0] = new Skybox(m_rc, sides1);
 	skybox[1] = new Skybox(m_rc, sides2);
+	skybox[0]->GetTexture().BuildMipmaps();
+	skybox[1]->GetTexture().BuildMipmaps();
+	skybox[0]->GetTexture().SetFilters(GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
+	skybox[1]->GetTexture().SetFilters(GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
 
 	models[0] = new Model(m_rc);
 	models[0]->scale = Vector3f(15.0f);
 	models[0]->location = Vector3f(0.0f, -50.0f, 0.0f);
-	models[0]->AddMesh(Mesh(m_rc));
-	models[0]->meshes[0]->LoadRaw("models/skull.obj.raw");
-	models[0]->meshes[0]->BindTexture(skybox[0]->GetTexture());
-	models[0]->BindShader(*program);
+
+	models[0]->LoadRaw("models/skull.raw");
+	models[0]->shader = *program;
 
 	models[1] = new Model(m_rc);
 	models[1]->scale = Vector3f(70.0f);
 	models[1]->location = Vector3f(0.0f, -30.0f, 0.0f);
-	models[1]->AddMesh(Mesh(m_rc));
-	models[1]->meshes[0]->LoadRaw("models/teapot.obj.raw");
-	models[1]->meshes[0]->BindTexture(skybox[1]->GetTexture());
-	models[1]->BindShader(*program);
+	models[1]->LoadRaw("models/teapot.raw");
+	models[1]->shader = *program;
 
 	ChangeModel(1);
 }
@@ -91,6 +93,7 @@ void MainWindow::OnDisplay()
 		camera->ApplyTransform();
 		program->UniformMatrix("View", 1, false, m_rc->GetModelView().data);
 		skybox[current]->Draw();
+		skybox[current]->GetTexture().Bind();
 		models[current]->Draw();
 	m_rc->PopModelView();
 }

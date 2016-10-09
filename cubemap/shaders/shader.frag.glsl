@@ -101,6 +101,7 @@ void main()
 	}
 
 	if (shadeMode == 1) {
+		//vec4 clr = textureLod(cubeTex, ref, 4);
 		vec4 clr = texture(cubeTex, ref);
 		vec4 clr_inv = vec4(1.0) - clr;
 		float d = 1.0 - max(0.0, dot(clr_inv, frontMaterial.diffuse));

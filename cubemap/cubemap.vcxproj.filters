@@ -75,6 +75,15 @@
     <ClCompile Include="..\..\..\lib\opengl\source\trackball.cpp">
       <Filter>Файлы исходного кода\lib</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\lib\opengl\source\modelloader.cpp">
+      <Filter>Файлы исходного кода\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\opengl\source\frustumculler.cpp">
+      <Filter>Файлы исходного кода\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\opengl\source\material.cpp">
+      <Filter>Файлы исходного кода\lib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainwindow.h">

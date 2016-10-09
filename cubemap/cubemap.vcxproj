@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,13 +19,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -41,13 +41,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <IncludePath>C:\Users\HP\Documents\Visual Studio 2012\Projects\3D\lib\opengl\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\HP\Documents\Visual Studio 2012\Projects\3D\lib\opengl\;C:\Users\HP\Documents\Visual Studio 2012\Projects\3D\lib\opengl\include;$(IncludePath)</IncludePath>
     <SourcePath>$(SourcePath)</SourcePath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\HP\Documents\Visual Studio 2012\Projects\3D\lib\opengl\gl;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\HP\Documents\Visual Studio 2012\Projects\3D\lib\opengl\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\HP\Documents\Visual Studio 2012\Projects\3D\lib\opengl\;C:\Users\HP\Documents\Visual Studio 2012\Projects\3D\lib\opengl\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\HP\Documents\Visual Studio 2012\Projects\3D\lib\opengl\gl;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -75,11 +76,14 @@
     <ClCompile Include="..\..\..\lib\opengl\source\basewindow.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\camera.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\framebuffer.cpp" />
+    <ClCompile Include="..\..\..\lib\opengl\source\frustumculler.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\glcontext.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\glwindow.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\image.cpp" />
+    <ClCompile Include="..\..\..\lib\opengl\source\material.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\mesh.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\model.cpp" />
+    <ClCompile Include="..\..\..\lib\opengl\source\modelloader.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\quaternion.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\shader.cpp" />
     <ClCompile Include="..\..\..\lib\opengl\source\skybox.cpp" />
